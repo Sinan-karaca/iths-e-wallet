@@ -4,6 +4,7 @@
       <span>{{ text[0] }}</span>
       {{ text[1] }}
     </h1>
+    <p>{{ text[2] }}</p>
   </div>
 </template>
 

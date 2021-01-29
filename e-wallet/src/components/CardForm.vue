@@ -55,7 +55,7 @@
           <label>
             <!-- TA INTE BORT LABEL LOL -->
           </label>
-          <input type="submit" value="ADD CARD" class="btn" />
+          <input @click="saveCard" type="submit" value="ADD CARD" class="btn" />
         </form>
       </div>
     </div>
@@ -69,6 +69,7 @@ export default {
     return {
       cardFormData: {
         Number: "",
+        Id: "",
         Name: "",
         Valid: "",
         CCV: "",
@@ -81,6 +82,12 @@ export default {
     emitToParent() {
       this.$emit("childToParent", this.cardFormData);
     },
+    saveCard: function () {
+
+      this.$root.$data.cards.push(this.cardFormData);
+      this.$router.push('/');
+
+    }
   },
 };
 </script>
@@ -160,21 +167,17 @@ label {
 }
 
 .btn {
-  background-color: #4caf50;
+  background-color: black;
   color: white;
   padding: 12px;
   margin: 10px 0;
   border: none;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 17px;
+  height: 3.5em;
 }
-
-.btn:hover {
-  background-color: #45a049;
-}
-
 a {
   color: #2196f3;
 }

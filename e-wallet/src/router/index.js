@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import App from "../App.vue";
+
 
 Vue.use(VueRouter);
 
@@ -11,8 +13,13 @@ const routes = [
     component: Home
   },
   {
-    path: "/Card",
-    name: "Card",
+    path: "/",
+    name: "App",
+    component: App
+  },
+  {
+    path: "/CardParent",
+    name: "CardParent",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/CardParent.vue")
   }

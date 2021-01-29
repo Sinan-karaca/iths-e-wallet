@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="cardFormData.Vendor">
+  <div @click="setActive" class="card" :class="cardFormData.Vendor">
     <img id="chip" src="../assets/chip-dark.svg" />
     <div id="logo" :class="cardFormData.Vendor"></div>
 
@@ -24,14 +24,38 @@
 <script>
 export default {
   props: ["cardFormData"],
+
+  methods: {
+    setActive() {
+      this.$emit("wasClicked", this.cardFormData);
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.card {
+  display: grid;
+  width: 400px;
+  height: 205px;
+  background: lightblue;
+  margin: 0 auto;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  grid-template-columns: 40% 40% 20%;
+  grid-template-areas:
+    "chip . logo"
+    "chip . logo"
+    "number number number"
+    "cardholder . validthru"
+    "holdername . valid";
+}
 .bitcoin {
   background: #daa520;
-  color: #855F00;
+  color: #855f00;
 }
 .bitcoin > #logo {
   background: url("../assets/vendor-bitcoin.svg");
@@ -40,7 +64,7 @@ export default {
 }
 .blockchain {
   background: #f66981;
-  color: #FDBFCA;
+  color: #fdbfca;
 }
 .blockchain > #logo {
   background: url("../assets/vendor-blockchain.svg");
@@ -49,7 +73,7 @@ export default {
 }
 .ninja {
   background: #313131;
-  color: #9C9B9B;
+  color: #9c9b9b;
 }
 .ninja > #logo {
   background: url("../assets/vendor-ninja.svg");
@@ -63,25 +87,7 @@ export default {
 }
 .evilcorp {
   background: #d2691e;
-  color: #FFAF76;
-}
-.card {
-  display: grid;
-  width: 400px;
-  height: 205px;
-  /* background: lightblue; */
-  margin: 0 auto;
-  /* color: black; */
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  grid-template-columns: 40% 40% 20%;
-  grid-template-areas:
-    "chip . logo"
-    "chip . logo"
-    "number number number"
-    "cardholder . validthru"
-    "holdername . valid";
+  color: #ffaf76;
 }
 
 #chip {

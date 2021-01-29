@@ -8,7 +8,7 @@
 
 <script>
 // @ is an alias to /src
-import Top from "@/components/Top.vue";
+import Top from "../components/Top.vue";
 import CardChild from "@/components/CardChild.vue";
 import CardForm from "@/components/CardForm.vue";
 
@@ -21,6 +21,7 @@ export default {
 
   data() {
     return {
+      text: ["Add ", "new card", "New Card"],
       cardFormData: {
         Number: "",
         Name: "",
@@ -36,6 +37,9 @@ export default {
       this.cardFormData = value;
       //this.fromChild = value
     },
+    // updateMyCard(card) {
+    //   this.card = card;
+    // },
   },
 };
 </script>
