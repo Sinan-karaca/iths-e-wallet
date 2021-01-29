@@ -3,9 +3,14 @@
     <Top :text="text" />
     <CardChild :cardFormData="card" />
     <CardStack v-on:changeActive="changedCard" />
+    <PopUpModal
+      v-show="isModalVisible"
+      @close="closeModal"
+      @confirmDelete="deleteCard"
+    />
     <div id="buttons-id">
       <button @click="changePage">Add New Card</button>
-      <button class="delete" @click="deleteCard">Delete Card</button>
+      <button class="delete" @click="showModal">Delete Card</button>
     </div>
   </div>
 </template>
@@ -14,16 +19,24 @@
 import Top from "../components/Top.vue";
 import CardChild from "@/components/CardChild.vue";
 import CardStack from "@/components/CardStack.vue";
+import PopUpModal from "@/components/PopUpModal.vue";
 
 export default {
-  components: { Top, CardChild, CardStack },
+  components: { Top, CardChild, CardStack, PopUpModal,},
   data() {
     return {
+      isModalVisible: false,
       card: this.$root.$data.cards[0],
       text: ["E-", "Wallet", "Active card"],
     };
   },
   methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
     changedCard(value) {
       this.card = value;
     },
@@ -66,6 +79,6 @@ button {
   cursor: pointer;
   font-size: 17px;
   margin-right: 2em;
-    margin-left: 2em;
+  margin-left: 2em;
 }
 </style>

@@ -32,7 +32,7 @@ export default {
   filter: drop-shadow(10px 10px 4px #959597);
 }
 li > .card {
-  margin-top: -170px;
+  margin-top: -200px;
   position: sticky;
   filter: drop-shadow(10px 10px 4px #959597);
 }
